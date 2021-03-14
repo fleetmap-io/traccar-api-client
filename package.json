@@ -4,11 +4,12 @@
   "description": "traccar-api-client",
   "author": "jcardus",
   "keywords": [
+    "traccar",
+    "api",
     "axios",
     "typescript",
     "openapi-client",
-    "openapi-generator",
-    ""
+    "openapi-generator"
   ],
   "license": "Unlicense",
   "main": "./dist/index.js",
