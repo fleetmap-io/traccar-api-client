@@ -1,6 +1,8 @@
-## @
+## @traccar-api
 
-This generator creates TypeScript/JavaScript client that utilizes [axios](https://github.com/axios/axios). The generated Node module can be used in the following environments:
+Generated with swagger and fixed some issues with multi-value parameters.
+
+TypeScript/JavaScript client that utilizes [axios](https://github.com/axios/axios). The generated Node module can be used in the following environments:
 
 Environment
 * Node.js
@@ -17,29 +19,18 @@ Module system
 
 It can be used in both TypeScript and JavaScript. In TypeScript, the definition should be automatically resolved via `package.json`. ([Reference](http://www.typescriptlang.org/docs/handbook/typings-for-npm-packages.html))
 
-### Building
-
-To build and compile the typescript sources to javascript use:
-```
-npm install
-npm run build
-```
-
-### Publishing
-
-First build the package then run ```npm publish```
-
-### Consuming
-
-navigate to the folder of your consuming project and run one of the following commands.
-
-_published:_
+### Installing
 
 ```
-npm install @ --save
+npm install traccar-api
 ```
-
-_unPublished (not recommended):_
-
+### Example code for devices
 ```
-npm install PATH_TO_GENERATED_PACKAGE --save
+const {DevicesApi} = require('traccar-api')
+const devicesApi = new DevicesApi({
+            basePath: 'https://your_traccar_server/api',
+            baseOptions: {withCredentials: true}
+        })
+
+const devices = devicesApi.devicesGet().then(r => r.data)
+```
