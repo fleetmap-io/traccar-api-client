@@ -95,7 +95,7 @@ export const ReportsApiAxiosParamCreator = function (configuration?: Configurati
          */
         reportsEventsGet: async (from: Date, to: Date, deviceId?: Array<number>, groupId?: Array<number>, type?: Array<string>, options: any = {}): Promise<RequestArgs> => {
             // verify required parameter 'from' is not null or undefined
-           return Get('/reports/events', from, to, configuration, options, groupId, deviceId)
+           return Get('/reports/events', from, to, configuration, options, groupId, deviceId, type)
         },
         /**
          * At least one _deviceId_ or one _groupId_ must be passed
