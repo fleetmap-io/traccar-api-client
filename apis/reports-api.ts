@@ -8,14 +8,14 @@ import globalAxios, { AxiosPromise, AxiosInstance } from 'axios';
 import { Configuration } from '../configuration';
 // Some imports not used depending on template conditions
 // @ts-ignore
-import { BASE_PATH, RequestArgs, BaseAPI, RequiredError } from '../base';
+import { BASE_PATH, RequestArgs, BaseAPI, RequiredError, COLLECTION_FORMATS } from '../base';
 import { Event } from '../models';
 import { Position } from '../models';
 import { ReportStops } from '../models';
 import { ReportSummary } from '../models';
 import { ReportTrips } from '../models';
 
-function Get(localVarPath: string, from: Date, to: Date, configuration: Configuration, options: any, groupId: Array<number>, deviceId: Array<number>) {
+function Get(localVarPath: string, from: Date, to: Date, configuration: Configuration, options: any, groupId: Array<number>, deviceId: Array<number>, type?: Array<string>) {
     if (from === null || from === undefined) {
         throw new RequiredError('from', 'Required parameter from was null or undefined when calling reportsTripsGet.');
     }
@@ -35,6 +35,9 @@ function Get(localVarPath: string, from: Date, to: Date, configuration: Configur
 
     // authentication basicAuth required
 
+    if (type) {
+        localVarQueryParameter['type'] = type.join(COLLECTION_FORMATS.csv);
+    }
 
     if (groupId) {
         localVarQueryParameter['groupId'] = groupId;
