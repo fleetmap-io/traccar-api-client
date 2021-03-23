@@ -35,14 +35,6 @@ function Get(localVarPath: string, from: Date, to: Date, configuration: Configur
 
     // authentication basicAuth required
 
-    if (type) {
-        localVarQueryParameter['type'] = type.join(COLLECTION_FORMATS.csv);
-    }
-
-    if (groupId) {
-        localVarQueryParameter['groupId'] = groupId;
-    }
-
     localVarQueryParameter['from'] = (from as any instanceof Date) ?
         (from as any).toISOString() :
         from;
@@ -62,6 +54,16 @@ function Get(localVarPath: string, from: Date, to: Date, configuration: Configur
     if (deviceId) {
         deviceId.forEach(d => {
             searchParams.append('deviceId', d.toString())
+        })
+    }
+    if (type) {
+        type.forEach(d => {
+            searchParams.append('type', d.toString())
+        })
+    }
+    if (groupId) {
+        groupId.forEach(d => {
+            searchParams.append('groupId', d.toString())
         })
     }
 
